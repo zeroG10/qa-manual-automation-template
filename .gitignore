@@ -18,3 +18,17 @@ _bmad-output/
 
 # Leftover artifacts
 example.png
+
+# Python / Appium mobile automation
+__pycache__/
+*.py[cod]
+.venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+allure-results/
+allure-report/
+automation/mobile/builds/*
+!automation/mobile/builds/.gitkeep
+automation/mobile/.env
+automation/api/.env

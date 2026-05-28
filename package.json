@@ -11,18 +11,11 @@
     "typescript": "^5.0.0"
   },
   "scripts": {
-
-    "pw:test": "playwright test",
-
-    "pw:ui": "playwright test --ui",
-
-    "pw:debug": "playwright test --debug",
-
+    "pw:test": "playwright test --config=automation/web/playwright.config.ts",
+    "pw:ui": "playwright test --config=automation/web/playwright.config.ts --ui",
+    "pw:debug": "playwright test --config=automation/web/playwright.config.ts --debug",
     "pw:codegen": "playwright codegen",
-
     "pw:report": "playwright show-report automation/web/playwright/playwright-report",
-
     "pw:screenshot": "playwright screenshot"
-
   }
 }
