@@ -1,0 +1,28 @@
+{
+  "name": "test-project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.60.0",
+    "typescript": "^5.0.0"
+  },
+  "scripts": {
+
+    "pw:test": "playwright test",
+
+    "pw:ui": "playwright test --ui",
+
+    "pw:debug": "playwright test --debug",
+
+    "pw:codegen": "playwright codegen",
+
+    "pw:report": "playwright show-report automation/web/playwright/playwright-report",
+
+    "pw:screenshot": "playwright screenshot"
+
+  }
+}

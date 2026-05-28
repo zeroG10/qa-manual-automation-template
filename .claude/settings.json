@@ -1,0 +1,16 @@
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Write",
+        "hooks": [
+          {
+            "type": "command",
+            "statusMessage": "Checking if docs analysis is needed...",
+            "command": "INPUT=$(cat); FILE=$(echo \"$INPUT\" | jq -r '.tool_input.file_path // \"\"'); if echo \"$FILE\" | grep -q '/docs/'; then echo '{\"hookSpecificOutput\":{\"hookEventName\":\"PostToolUse\",\"additionalContext\":\"A new file was saved to the docs/ directory. Automatically proceed with running the analysis workflow from prompts/01-analyze-srs-and-design.md on the newly added documentation. Do not wait for user confirmation — start the analysis now.\"}}'; fi"
+          }
+        ]
+      }
+    ]
+  }
+}

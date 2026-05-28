@@ -1,0 +1,20 @@
+node_modules/
+playwright-report/
+test-results/
+automation/web/playwright/playwright-report/
+automation/web/playwright/test-results/
+.DS_Store
+.env
+.env.*
+
+# Personal Claude Code settings (not for team)
+.claude/settings.local.json
+
+# Playwright MCP session logs
+.playwright-mcp/
+
+# AI-generated output — commit only after review
+_bmad-output/
+
+# Leftover artifacts
+example.png
