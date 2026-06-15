@@ -30,7 +30,7 @@ needed to scope quickly — agents can also traverse the whole file from `fileKe
 | Forgot password | `31:19987` | 2946×7889 | [docs/srs/01-authentication.md](../../srs/01-authentication.md) |
 | Set password | `31:20046` | 3664×7889 | [docs/srs/01-authentication.md](../../srs/01-authentication.md) |
 | Managers | `4:14561` | 9040×7041 | [docs/srs/02-managers.md](../../srs/02-managers.md) |
-| Field Technicians | `114:18590` | 9040×5405 | _TBD — no SRS yet_ |
+| Field Technicians | `114:18590` | 9040×5405 | [docs/srs/03-field-technicians.md](../../srs/03-field-technicians.md) |
 | Survey | `15:26995` | 18557×9652 | _TBD — no SRS yet_ |
 | Template | `33:43351` | 9040×5818 | _TBD — no SRS yet_ |
 | Responses | `55:15922` | 10183×5562 | _TBD — no SRS yet_ |
