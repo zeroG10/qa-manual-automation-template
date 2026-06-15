@@ -30,6 +30,7 @@ FEATURE_PREFIX_MAP: dict[str, str] = {
     # Web features
     "authentication": "AUTH",
     "managers": "MGR",
+    "field-technicians": "FT",
     "surveys": "SURV",
     "templates": "TMPL",
     "responses": "RESP",

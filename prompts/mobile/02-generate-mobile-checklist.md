@@ -30,7 +30,7 @@ These rules override the prompt body below for this project:
    **SRS + design together**; any SRS↔design disagreement goes to Open Questions, never
    silently resolved. If a resource is missing, note exactly what and from where.
 3. **Every checklist item MUST start with a stable ID** in the format `[CHK-<FEATURE>-<NNN>]`:
-   - `<FEATURE>` is the uppercased feature code derived from the filename. Mapping mirrors web: `authentication → AUTH`, `managers → MGR`, `surveys → SURV`, `templates → TMPL`, `responses → RESP`, `photo-tags → PTAG`. For other names, use the first 4 letters uppercase.
+   - `<FEATURE>` is the uppercased feature code derived from the filename. Mapping mirrors web: `authentication → AUTH`, `managers → MGR`, `field-technicians → FT`, `surveys → SURV`, `templates → TMPL`, `responses → RESP`, `photo-tags → PTAG`. For other names, use the first 4 letters uppercase.
    - `<NNN>` is a zero-padded 3-digit sequence number, monotonically increasing across the whole file (NOT restarted per section).
    - **When regenerating an existing checklist**: read the prior file first and PRESERVE existing IDs. Only assign new IDs to genuinely new checks, using numbers higher than the current max.
    - Use numbered list items (`1. [CHK-AUTH-001] Check that ...`) so the sync tool can parse them — do not rely solely on `- [ ]` boxes for items that need to be synced.
