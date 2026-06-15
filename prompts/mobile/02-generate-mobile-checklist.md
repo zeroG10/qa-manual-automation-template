@@ -16,6 +16,30 @@ Generate a platform-aware mobile testing checklist that covers functional, UX, p
 
 ---
 
+## Project overrides (read first)
+
+These rules override the prompt body below for this project:
+
+1. **Do NOT append `[AUTO]` markers** to checklist items. Automation-candidate selection is handled separately. Ignore any "AUTO candidates" guidance in the prompt body.
+2. **Design is a required input, pulled live from Figma.** When a screen exists in the
+   design, read it before writing checks: open the **mobile** design map
+   [docs/designs/mobile/figma-sources.md](../../docs/designs/mobile/figma-sources.md)
+   for the `fileKey` + `node-id` (do **NOT** use the web map), then use
+   `mcp__figma__get_figma_data` (structure) and `mcp__figma__download_figma_images`
+   (rendered screen → `docs/designs/mobile/screens/`, gitignored). Generate checks from
+   **SRS + design together**; any SRS↔design disagreement goes to Open Questions, never
+   silently resolved. If a resource is missing, note exactly what and from where.
+3. **Every checklist item MUST start with a stable ID** in the format `[CHK-<FEATURE>-<NNN>]`:
+   - `<FEATURE>` is the uppercased feature code derived from the filename. Mapping mirrors web: `authentication → AUTH`, `managers → MGR`, `surveys → SURV`, `templates → TMPL`, `responses → RESP`, `photo-tags → PTAG`. For other names, use the first 4 letters uppercase.
+   - `<NNN>` is a zero-padded 3-digit sequence number, monotonically increasing across the whole file (NOT restarted per section).
+   - **When regenerating an existing checklist**: read the prior file first and PRESERVE existing IDs. Only assign new IDs to genuinely new checks, using numbers higher than the current max.
+   - Use numbered list items (`1. [CHK-AUTH-001] Check that ...`) so the sync tool can parse them — do not rely solely on `- [ ]` boxes for items that need to be synced.
+4. **Mobile and Web live in SEPARATE Google Sheets** (configured via `MOBILE_*` vs `WEB_*` in `automation/tools/.env` — different `SHEET_ID`s, not just different tabs). Feature codes can therefore **overlap freely** between web and mobile: `CHK-AUTH-001` in the mobile sheet is independent from `CHK-AUTH-001` in the web sheet. Do not try to disambiguate — use the same codes as web for the same feature.
+5. **Sync command** for mobile checklists:
+   ```
+   uv run python sync_checklist_to_sheets.py --target mobile <path-to-md>
+   ```
+
 ## Prompt
 
 ```

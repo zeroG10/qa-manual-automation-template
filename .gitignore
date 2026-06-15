@@ -32,3 +32,11 @@ automation/mobile/builds/*
 !automation/mobile/builds/.gitkeep
 automation/mobile/.env
 automation/api/.env
+
+# qa-tools secrets
+automation/tools/.secrets/
+automation/tools/.env
+
+# Figma-downloaded design screenshots (regenerate from Figma via MCP)
+docs/designs/web/screens/
+docs/designs/mobile/**/screens/

@@ -1,0 +1,9 @@
+[project]
+name = "qa-tools"
+version = "0.1.0"
+description = "QA tooling: sync checklists to Google Sheets"
+requires-python = ">=3.11"
+dependencies = [
+    "gspread>=6.0",
+    "python-dotenv>=1.0",
+]

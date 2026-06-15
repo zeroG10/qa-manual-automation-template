@@ -11,6 +11,27 @@
 
 ---
 
+## Project overrides (read first)
+
+These rules override the prompt body below for this project:
+
+1. **Do NOT append `[AUTO]` markers** to checklist items. Automation-candidate selection is handled separately by `prompts/06-select-automation-candidates.md`. Ignore the "Automation Candidate Rules" section of the prompt and do not include "AUTO candidates" in the Coverage Summary.
+2. **Design is a required input, pulled live from Figma.** When a screen exists in the
+   design, read it before writing checks: open [docs/designs/web/figma-sources.md](../docs/designs/web/figma-sources.md)
+   (mobile: `docs/designs/mobile/`) for the `fileKey` + `node-id`, then use
+   `mcp__figma__get_figma_data` (structure) and `mcp__figma__download_figma_images`
+   (rendered screen) via the project-local `figma` MCP server. Generate checks from
+   **SRS + design together**: cover UI elements, labels, states, and placement visible in
+   the design even if the SRS omits them, but do not invent behavior absent from both.
+   Any SRS↔design disagreement goes to **Open Questions**, never silently resolved. If a
+   resource is missing, note exactly what and from where.
+3. **Every checklist item MUST start with a stable ID** in the format `[CHK-<FEATURE>-<NNN>]`:
+   - `<FEATURE>` is the uppercased feature code derived from the filename. Mapping: `authentication → AUTH`, `managers → MGR`, `surveys → SURV`, `templates → TMPL`, `responses → RESP`, `photo-tags → PTAG`. For other names, use the first 4 letters uppercase.
+   - `<NNN>` is a zero-padded 3-digit sequence number, monotonically increasing across the whole file (NOT restarted per section).
+   - **When regenerating an existing checklist**: read the prior file first and PRESERVE existing IDs. Only assign new IDs to genuinely new checks, using numbers higher than the current max.
+   - Format: `1. [CHK-AUTH-001] Check that ...`
+   - IDs are the contract for syncing into Google Sheets via `automation/tools/sync_checklist_to_sheets.py`. Changing or reusing an ID will break status tracking.
+
 ## Prompt
 
 ```

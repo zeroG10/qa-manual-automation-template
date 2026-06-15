@@ -233,6 +233,37 @@ Setup details and required GitHub secrets: [.github/workflows/README.md](.github
 - Test cases: [qa/test-cases/web/_TEMPLATE.md](qa/test-cases/web/_TEMPLATE.md), [qa/test-cases/mobile/_TEMPLATE.md](qa/test-cases/mobile/_TEMPLATE.md)
 - Checklist: [qa/checklists/_TEMPLATE.md](qa/checklists/_TEMPLATE.md)
 
+## Prompt Templates (REQUIRED for QA artifact generation)
+
+When generating any QA artifact (manually or via subagents), you MUST first read
+the matching prompt template from `prompts/` and use it as the agent's instruction.
+Do not improvise the prompt — these templates encode the project's required output
+format, structure, and conventions.
+
+**Web / shared prompts** ([prompts/](prompts/)):
+
+| Task | Prompt file |
+|---|---|
+| Analyze SRS + design | [prompts/01-analyze-srs-and-design.md](prompts/01-analyze-srs-and-design.md) |
+| Generate checklist | [prompts/02-generate-checklist.md](prompts/02-generate-checklist.md) |
+| Generate test cases | [prompts/03-generate-test-cases.md](prompts/03-generate-test-cases.md) |
+| Create traceability matrix | [prompts/04-create-traceability-matrix.md](prompts/04-create-traceability-matrix.md) |
+| Review coverage | [prompts/05-review-coverage.md](prompts/05-review-coverage.md) |
+| Select automation candidates | [prompts/06-select-automation-candidates.md](prompts/06-select-automation-candidates.md) |
+
+**Mobile prompts** ([prompts/mobile/](prompts/mobile/)) — use these instead of the web prompts
+when the target platform is Mobile (iOS / Android / Flutter):
+
+| Task | Prompt file |
+|---|---|
+| Analyze mobile SRS + design | [prompts/mobile/01-analyze-mobile-srs-and-design.md](prompts/mobile/01-analyze-mobile-srs-and-design.md) |
+| Generate mobile checklist | [prompts/mobile/02-generate-mobile-checklist.md](prompts/mobile/02-generate-mobile-checklist.md) |
+| Generate mobile test cases | [prompts/mobile/03-generate-mobile-test-cases.md](prompts/mobile/03-generate-mobile-test-cases.md) |
+
+When dispatching work to a subagent (Agent tool), pass the prompt template's
+content as part of the agent's instructions, together with the specific input
+file path (e.g. a section of the SRS) and the target output path.
+
 ## MCP Tools Available
 
 - **Playwright MCP** — browser automation via natural language (configured in `.vscode/mcp.json`)

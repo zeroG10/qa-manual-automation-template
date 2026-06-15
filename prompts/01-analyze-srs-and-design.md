@@ -22,6 +22,30 @@ If a document type is missing, state it explicitly and proceed with available in
 
 ---
 
+## Design input from Figma (read first)
+
+Design is a **first-class input**, equal to the SRS — not optional. Pull it live from
+Figma via the project-local `figma` MCP server instead of waiting for pasted screenshots:
+
+1. Open the design map [docs/designs/web/figma-sources.md](../docs/designs/web/figma-sources.md)
+   (mobile: `docs/designs/mobile/`) to get the `fileKey` and the `node-id` of the screen(s)
+   relevant to the SRS section being analyzed.
+2. Read structure and content with `mcp__figma__get_figma_data` (`fileKey` + `nodeId`).
+3. Capture the rendered screen with `mcp__figma__download_figma_images` when visual layout,
+   exact labels, states, or element placement matter.
+4. Validate the SRS section **against what the design actually shows**. Every UI element,
+   field, control, state, label, and flow seen in the design must be reflected in section 8
+   (UI Elements) and reconciled in section 15 (Design vs SRS Comparison).
+
+Rules:
+- Do not assume design or SRS is correct by default — when they disagree, record it as a
+  Conflict in section 15 and raise an Open Question (section 18). Never silently pick one.
+- If the relevant screen is not in the design map or the file is unreadable, state it
+  explicitly and proceed with available inputs (do not invent design behavior).
+- If a needed resource is missing, note exactly what and from where it should come.
+
+---
+
 ## Prompt
 
 ```

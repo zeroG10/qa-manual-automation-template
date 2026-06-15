@@ -23,6 +23,25 @@ State any missing inputs explicitly and proceed with available ones.
 
 ---
 
+## Design input from Figma (read first)
+
+Design is a **first-class input**, equal to the SRS. Pull it live from Figma via the
+project-local `figma` MCP server instead of waiting for pasted mockups:
+
+1. Open the **mobile** design map [docs/designs/mobile/figma-sources.md](../../docs/designs/mobile/figma-sources.md)
+   for the `fileKey` + `node-id` of the screen(s) relevant to the mobile SRS section.
+   This is the mobile file (`fqVnRSiYlupxnQWJbOoqGT`) — do **NOT** use the web map.
+2. Read structure with `mcp__figma__get_figma_data` (`fileKey` + `nodeId`); capture the
+   rendered screen with `mcp__figma__download_figma_images` (save to
+   `docs/designs/mobile/screens/`, gitignored) when layout, labels, states, or gestures matter.
+3. Validate the SRS against what the design actually shows — reconcile every screen,
+   element, state, and gesture in the Design vs SRS comparison. Record conflicts as
+   Open Questions; never silently pick one side.
+4. If a screen is not in the map or the file is unreadable, state it and proceed (do not
+   invent design behavior). If a needed resource is missing, note exactly what and from where.
+
+---
+
 ## Prompt
 
 ```
