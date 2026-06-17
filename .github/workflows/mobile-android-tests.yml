@@ -86,7 +86,7 @@ jobs:
 
       - name: Upload Allure results
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: mobile-android-allure-results
           path: automation/mobile/allure-results/
@@ -94,7 +94,7 @@ jobs:
 
       - name: Upload Appium log
         if: failure()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: mobile-android-appium-log
           path: automation/mobile/appium.log
