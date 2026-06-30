@@ -94,6 +94,19 @@ _bmad/                       # BMAD TEA configuration (do not edit config.toml d
 - **Mobile test code** → `automation/mobile/tests/` (Appium + Python)
 - Do not commit `_bmad-output/` unless review and approval is complete
 
+### Checklist → Google Sheets: single writer (do not break this boundary)
+
+- **Markdown is the source of truth.** Checklists live in `qa/checklists/**/*.md` with
+  stable `[CHK-…]` IDs. Generate via the `qa-checklist` skill / `prompts/`.
+- **`automation/tools/sync_checklist_to_sheets.py` is the ONLY writer to live Sheets.**
+  It is idempotent and never touches status/comment columns. Publish via `qa-sheets-sync`
+  (always dry-run first).
+- **`vendor/checklist-kit/` is a colleague's external kit kept for REFERENCE ONLY** — see
+  [vendor/checklist-kit/VENDORED.md](vendor/checklist-kit/VENDORED.md). Its self-bootstrap
+  rules are disabled and must not run. Its Node generator does a **full sheet rebuild** and
+  must NEVER run against a live team sheet (it would wipe manually-entered statuses). We are
+  porting its richer layout into the Python sync as a one-time `--scaffold` mode instead.
+
 ### Platform split (web vs mobile)
 
 Most artifact folders are split into `web/` and `mobile/` subfolders. When creating

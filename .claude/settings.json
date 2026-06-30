@@ -1,4 +1,40 @@
 {
+  "permissions": {
+    "allow": [
+      "mcp__figma__download_figma_images",
+      "Bash(python3 -c ' *)",
+      "Bash(git add *)",
+      "Bash(git restore *)",
+      "Bash(git commit *)",
+      "Bash(git checkout *)",
+      "Bash(mkdir -p .claude/skills/qa-checklist)",
+      "Edit(/.claude/skills/qa-checklist/**)",
+      "Bash(sort -t: -k3)",
+      "Bash(uniq -f2 -c)",
+      "Bash(mkdir -p .claude/skills/qa-sheets-sync && echo ok)",
+      "Edit(/.claude/skills/qa-sheets-sync/**)",
+      "Bash(grep -nE \"^      - id: [0-9]+:[0-9]+$\" /Users/mac/.claude/projects/-Users-mac-Projects-Test-project/b6465563-a05a-4288-aac3-a5a6cfb6ce52/tool-results/mcp-figma-get_figma_data-1781522606811.txt)",
+      "Bash(grep -nE \"^      - id: [0-9]+:[0-9]+$|^        name: |^        type: \" /Users/mac/.claude/projects/-Users-mac-Projects-Test-project/b6465563-a05a-4288-aac3-a5a6cfb6ce52/tool-results/mcp-figma-get_figma_data-1781522606811.txt)",
+      "Bash(awk 'NR>=18287 && NR<=18512' /Users/mac/.claude/projects/-Users-mac-Projects-Test-project/b6465563-a05a-4288-aac3-a5a6cfb6ce52/tool-results/mcp-figma-get_figma_data-1781522606811.txt)",
+      "Bash(awk 'NR>=1947 && NR<=2818' /Users/mac/.claude/projects/-Users-mac-Projects-Test-project/b6465563-a05a-4288-aac3-a5a6cfb6ce52/tool-results/mcp-figma-get_figma_data-1781522606811.txt)",
+      "Bash(awk 'NR>=21509' /Users/mac/.claude/projects/-Users-mac-Projects-Test-project/b6465563-a05a-4288-aac3-a5a6cfb6ce52/tool-results/mcp-figma-get_figma_data-1781522606811.txt)",
+      "Bash(awk 'NR==21575||NR==21576||NR==22184||NR==22185||NR==22397||NR==22398||NR==22476||NR==22477||NR==22042||NR==22043' /Users/mac/.claude/projects/-Users-mac-Projects-Test-project/b6465563-a05a-4288-aac3-a5a6cfb6ce52/tool-results/mcp-figma-get_figma_data-1781522606811.txt)",
+      "Bash(grep -nA1 -E \"fill_D2184Y:|fill_P4SV19:|fill_IV1KVN:|fill_ANPYLH:|fill_UIFLVY:|fill_HS77WH:|fill_4GVCR0:\" /Users/mac/.claude/projects/-Users-mac-Projects-Test-project/b6465563-a05a-4288-aac3-a5a6cfb6ce52/tool-results/mcp-figma-get_figma_data-1781522606811.txt)",
+      "Bash(grep -nA1 -E \"M3/sys/light/primary:|M3/sys/light/on-surface:|M3/sys/light/on-surface-variant:|M3/sys/light/on-primary:|M3/sys/light/inverse-surface:\" /Users/mac/.claude/projects/-Users-mac-Projects-Test-project/b6465563-a05a-4288-aac3-a5a6cfb6ce52/tool-results/mcp-figma-get_figma_data-1781522606811.txt)",
+      "Bash(mkdir -p vendor)",
+      "Bash(git mv *)",
+      "Bash(mv \"_templates 2\" vendor/checklist-kit)",
+      "Bash(npm install *)",
+      "Bash(mkdir -p automation/checklist-gen/web)",
+      "Bash(ls vendor/checklist-kit/mcp-sheets/node_modules/googleapis)",
+      "Bash(node automation/checklist-gen/web/generate_via_api.mjs)",
+      "Bash(git check-ignore *)",
+      "Bash(echo \"exit: $?\")"
+    ],
+    "additionalDirectories": [
+      "/Users/mac/Projects/Test-project/.claude/skills"
+    ]
+  },
   "hooks": {
     "PostToolUse": [
       {
@@ -6,8 +42,8 @@
         "hooks": [
           {
             "type": "command",
-            "statusMessage": "Checking if docs analysis is needed...",
-            "command": "INPUT=$(cat); FILE=$(echo \"$INPUT\" | jq -r '.tool_input.file_path // \"\"'); if echo \"$FILE\" | grep -q '/docs/'; then echo '{\"hookSpecificOutput\":{\"hookEventName\":\"PostToolUse\",\"additionalContext\":\"A new file was saved to the docs/ directory. Automatically proceed with running the analysis workflow from prompts/01-analyze-srs-and-design.md on the newly added documentation. Do not wait for user confirmation — start the analysis now.\"}}'; fi"
+            "command": "INPUT=$(cat); FILE=$(echo \"$INPUT\" | jq -r '.tool_input.file_path // \"\"'); if echo \"$FILE\" | grep -q '/docs/'; then echo '{\"hookSpecificOutput\":{\"hookEventName\":\"PostToolUse\",\"additionalContext\":\"A new file was saved to the docs/ directory. Automatically proceed with running the analysis workflow from prompts/01-analyze-srs-and-design.md on the newly added documentation. Do not wait for user confirmation — start the analysis now.\"}}'; fi",
+            "statusMessage": "Checking if docs analysis is needed..."
           }
         ]
       }
