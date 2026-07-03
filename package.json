@@ -1,7 +1,7 @@
 {
-  "name": "test-project",
+  "name": "qa-automation-template",
   "version": "1.0.0",
-  "description": "",
+  "description": "Reusable QA template: manual artifacts + Playwright (web), Appium (mobile), httpx (API). Set name/description via /setup-project.",
   "main": "index.js",
   "directories": {
     "doc": "docs"

@@ -30,7 +30,7 @@ project-local `figma` MCP server instead of waiting for pasted mockups:
 
 1. Open the **mobile** design map [docs/designs/mobile/figma-sources.md](../../docs/designs/mobile/figma-sources.md)
    for the `fileKey` + `node-id` of the screen(s) relevant to the mobile SRS section.
-   This is the mobile file (`fqVnRSiYlupxnQWJbOoqGT`) — do **NOT** use the web map.
+   Use the mobile file's `fileKey` from that map — do **NOT** use the web map.
 2. Read structure with `mcp__figma__get_figma_data` (`fileKey` + `nodeId`); capture the
    rendered screen with `mcp__figma__download_figma_images` (save to
    `docs/designs/mobile/screens/`, gitignored) when layout, labels, states, or gestures matter.

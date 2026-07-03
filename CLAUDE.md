@@ -83,6 +83,7 @@ exports/                     # Final deliverables
 
 prompts/                     # Reusable AI prompt templates
 setup/                       # Template deployment: project.yaml (manifest) + SETUP.md (map)
+examples/                    # Filled-in artifacts from a past project — REFERENCE ONLY (see examples/README.md)
 _bmad/                       # BMAD TEA configuration (do not edit config.toml directly)
 ```
 

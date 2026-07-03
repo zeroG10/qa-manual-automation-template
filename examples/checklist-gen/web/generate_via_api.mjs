@@ -21,7 +21,13 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const REPO_ROOT = resolve(__dirname, '../../..');
 
 // ── EDIT FOR EACH PROJECT ───────────────────────────────────────────────
-const SPREADSHEET_ID = '1RCjErP9kWUA7Nr64YXqvkxrd6IQxmJgctVed-Qz7Uco';
+// SAFETY: this generator does a FULL SHEET REBUILD. Never point it at a live
+// team sheet. Set the ID explicitly per run; it fails fast while unset.
+const SPREADSHEET_ID = '<YOUR_SPREADSHEET_ID>';
+if (SPREADSHEET_ID.startsWith('<')) {
+  console.error('SPREADSHEET_ID is not configured — edit the constants block first.');
+  process.exit(1);
+}
 const SHEET_NAME     = 'Checklist';
 const GS_PATH        = resolve(__dirname, 'checklist_generator.gs');
 const GENERATOR_FN   = 'createAuthenticationChecklist';

@@ -98,5 +98,8 @@ If `platforms.<stack>` is `false` in the manifest:
 - `vendor/checklist-kit/**` — colleague's kit, REFERENCE ONLY. Its Node
   generator does a full sheet rebuild and would wipe manually-entered
   statuses on a live team sheet.
-- `automation/checklist-gen/**` — scaffold-only generator; requires an
-  explicitly configured `SPREADSHEET_ID` and an explicit user request.
+- `examples/checklist-gen/**` — scaffold-only generator kept as an example;
+  requires an explicitly configured `SPREADSHEET_ID` and an explicit user request.
+- `examples/**` in general is reference-only content from a past project — see
+  [examples/README.md](../examples/README.md). Never treat it as current
+  requirements.

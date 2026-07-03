@@ -9,8 +9,9 @@ implementation_artifacts: "{project-root}/_bmad-output/implementation-artifacts"
 project_knowledge: "{project-root}/docs"
 
 # Core Configuration Values
-user_name: Mac
-project_name: Test-project
+# user_name / project_name are set by the /setup-project skill
+user_name: "<USER_NAME>"
+project_name: "<PROJECT_NAME>"
 communication_language: English
 document_output_language: English
 output_folder: _bmad-output
