@@ -82,6 +82,7 @@ exports/                     # Final deliverables
   └── final/                 # Final approved artifacts
 
 prompts/                     # Reusable AI prompt templates
+setup/                       # Template deployment: project.yaml (manifest) + SETUP.md (map)
 _bmad/                       # BMAD TEA configuration (do not edit config.toml directly)
 ```
 
@@ -283,12 +284,21 @@ file path (e.g. a section of the SRS) and the target output path.
 
 ## When Starting a New Project
 
-1. Update **Web Base URL** in `automation/web/playwright.config.ts`
-2. Update **Mobile config** in `automation/mobile/.env` (device, app path, bundle id / package)
-3. Update **API base URL** in `automation/api/.env`
-4. Update **Project name** at the top of this file
-5. Update [docs/platform-specs/supported-devices.md](docs/platform-specs/supported-devices.md) with real support policy
-6. Update [qa/device-matrix/device-matrix.md](qa/device-matrix/device-matrix.md) with your QA coverage matrix
-7. Place all source docs in `docs/` subdirectories (use `web/` vs `mobile/` splits where they exist)
-8. Run `/bmad-agent-analyst` to analyze requirements
-9. Run `/bmad-tea` to build test strategy
+**Run the `/setup-project` skill** — the single entry point for deploying this
+template. It reads the project manifest [setup/project.yaml](setup/project.yaml),
+asks for missing values, propagates them into every consumer file per
+[setup/SETUP.md](setup/SETUP.md) (Playwright baseURL, `.env` files,
+figma-sources, package.json, BMAD config, this file), wires the integrations
+(Figma MCP, Google Sheets service account, Playwright, API, Appium) and
+verifies each one.
+
+AI agents: do not configure the template ad hoc — `setup/SETUP.md` is the
+authoritative map of what goes where. If the map disagrees with reality, fix
+the map in the same session.
+
+After setup:
+1. Update [docs/platform-specs/supported-devices.md](docs/platform-specs/supported-devices.md) with the real support policy
+2. Update [qa/device-matrix/device-matrix.md](qa/device-matrix/device-matrix.md) with your QA coverage matrix
+3. Place all source docs in `docs/` subdirectories (use `web/` vs `mobile/` splits where they exist)
+4. Run `/bmad-agent-analyst` to analyze requirements
+5. Run `/bmad-tea` to build test strategy

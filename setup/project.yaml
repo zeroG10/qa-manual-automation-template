@@ -1,0 +1,74 @@
+# ============================================================================
+# PROJECT MANIFEST — single source of truth for project-specific values.
+#
+# When starting a new project from this template:
+#   1. Fill in every <PLACEHOLDER> below (or leave it — the /setup-project
+#      skill will ask you for missing values interactively).
+#   2. Run /setup-project. It propagates these values into every consumer
+#      file listed in setup/SETUP.md and verifies the integrations.
+#
+# AI agents: NEVER guess a value that is still a <PLACEHOLDER> — ask the user.
+# This file is committed (it contains no secrets). Secrets go into the
+# .env files and .secrets/ folders listed in setup/SETUP.md.
+# ============================================================================
+
+project:
+  name: "<PROJECT_NAME>"                # e.g. "Acme Field Service"
+  repo_name: "<repo-slug>"              # e.g. "acme-qa" — used in package.json
+  description: "<one-line description>"
+
+# Which test stacks this project actually uses. Set unused ones to false —
+# /setup-project will then skip their configuration and CI can be trimmed.
+platforms:
+  web: true
+  mobile: true
+  api: true
+
+web:
+  base_url: "<https://your-app.example.com>"
+  figma:
+    file_key: "<FIGMA_FILE_KEY>"        # from https://www.figma.com/design/<FILE_KEY>/<name>
+    file_name: "<Figma file name>"
+    main_page_node: "<0:1>"             # canvas node-id of the main page
+
+mobile:
+  kind: "<native|flutter>"              # flutter → FLUTTER_ENABLED=true in automation/mobile/.env
+  android:
+    app_package: "<com.example.app>"
+    app_activity: "<com.example.app.MainActivity>"
+  ios:
+    bundle_id: "<com.example.app>"
+  figma:
+    file_key: "<FIGMA_FILE_KEY>"
+    file_name: "<Figma file name>"
+    main_page_node: "<0:1>"
+
+api:
+  base_url: "<https://api.your-app.example.com>"
+  env_label: "staging"                  # dev | staging | prod — used in reports
+
+# Google Sheets that the checklist sync publishes into.
+# IDs come from the sheet URL: docs.google.com/spreadsheets/d/<THIS_PART>/edit
+# Column letters depend on the sheet layout — see automation/tools/README.md.
+sheets:
+  web:
+    sheet_id: "<WEB_SHEET_ID>"
+    worksheet: "Check-list"
+    id_col: "O"
+    obsolete_col: "P"
+  mobile:
+    sheet_id: "<MOBILE_SHEET_ID>"
+    worksheet: "Check-list"
+    id_col: "N"
+    obsolete_col: "O"
+
+# Integration prerequisites — /setup-project checks these and reports status.
+# Values here are pointers/instructions, not secrets.
+integrations:
+  figma_mcp:
+    server: "figma"                     # project-local MCP server in .mcp.json
+    auth: "Set FIGMA_PERSONAL_ACCESS_TOKEN in your shell env (PAT from figma.com/settings)"
+  google_sheets:
+    auth: "Service-account JSON at automation/tools/.secrets/credentials.json (gitignored). Share each sheet with the service-account email as Editor."
+  playwright_mcp:
+    server: "playwright"                # configured in .vscode/mcp.json, no auth needed
